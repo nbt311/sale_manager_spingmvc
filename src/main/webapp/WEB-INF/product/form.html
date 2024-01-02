@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Student</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body{
+            margin-top:20px;
+            background-color: #f2f3f8;
+        }
+        .card {
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);
+        }
+
+        .card {
+            position: relative;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 1px solid #e5e9f2;
+            border-radius: .2rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container h-100">
+    <div class="row h-100">
+        <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+            <div class="d-table-cell align-middle">
+                <div class="text-center mt-4">
+                    <h1 class="h2">Form Product</h1>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="m-sm-4">
+                            <form method="post" th:object="${product}">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input class="form-control form-control-lg" type="text" name="name" placeholder="Enter product name" th:field="*{name}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <input class="form-control form-control-lg" type="text" name="price" placeholder="Enter product price" th:field="*{price}">
+                                </div>
+                                <div>
+                                    <lanel>Category</lanel>
+                                    <select class="form-control form-control-lg" name="classroom" id="classroom" th:field="*{category}">
+                                        <option value="">Select Product Category</option>
+                                        <option th:each="c, cr: ${category}" th:value="${c.getId()}" th:text="${c.getName()}"></option>
+                                    </select>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button class="btn btn-danger"><a href="/api/products">Back</a></button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
